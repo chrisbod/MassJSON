@@ -1,0 +1,10 @@
+After a few projects that have worked with incredibly large json downloads and my own experimentation with large datasets (Astronomy related and thus of astronomical size!*) to be stored in HTML5 local SQL databases it occurred to me that rather than send down full json structures with named fields it might be easier to steal tabular database formats for transferring bulk data for injection into IndexedDBs or SQLDatabases on the client side or even simply 'efficient/lower overhead' in memory storage. The code here is mainly for discussion and benchmarking - though it's quite possible that mobile or offline applications may upon install need to populate large amounts of data into a local database rather than do so everytime the application is launched. 
+
+In terms of raw data size here's a quick summary of the dataset:
+stations.json: ~45Mb (gzipped ~4Mb)
+stations_as_columns.json: ~13Mb (gzipped ~3Mb)
+As you can see the uncompressed data to be parsed from JSON is around 80% smaller and the transmitted compressed data is 25% smaller - in terms of database population the performance improvements as a consequence of this approach were massive since the columnal/row data was incredibly simple to inject into a database (a simple iteration) and used a lot less memory to boot - the real test here (and why I'm bothering to share these files) is whether there are still gains to be made with the additional overhead of reassembling the row data into the original JSON structure given in stations.json e.g. for insertion into an indexedDB as individual JSON records or simply for in memory use by an application
+
+
+
+*This was initially for the new game Elite but became a general interest in Astronomy pretty rapidly - however the dataset being used here is from Elite since it was available as json rather than binary formats or csv and was sufficiently large to cause browsers to stutter etc - 45 megabytes or thereabouts (see stations.json in the data directory where you can also see the columnal equivalent stations_as_columns.json as well as gzips to show the over the wire overhead differences). 
