@@ -3,7 +3,7 @@ After a few projects that have worked with incredibly large json downloads and m
 In terms of raw data size here's a quick summary of the dataset:
 stations.json: ~45Mb (gzipped ~4Mb)
 stations_as_columns.json: ~13Mb (gzipped ~3Mb)
-As you can see the uncompressed data to be parsed from JSON is around 80% smaller and the transmitted compressed data is 25% smaller - in terms of database population the performance improvements as a consequence of this approach were massive since the columnal/row data was incredibly simple to inject into a database (a simple iteration) and used a lot less memory to boot - the real test here (and why I'm bothering to share these files) is whether there are still gains to be made with the additional overhead of reassembling the row data into the original JSON structure given in stations.json e.g. for insertion into an indexedDB as individual JSON records or simply for in memory use by an application
+As you can see the uncompressed data to be parsed from JSON is around 80% smaller and the transmitted compressed data is 25% smaller - in terms of database population the performance improvements as a consequence of this approach were massive since the columnal/row data was incredibly simple to inject into an HML SQLite database (a simple iteration) and used a lot less memory to boot - the real test here (and why I'm bothering to share these files) is whether there are still gains to be made with the additional overhead of reassembling the row data into the original JSON structure given in stations.json e.g. for insertion into an indexedDB as individual JSON records or simply for in memory use by an application
 
 
 
